@@ -35,7 +35,7 @@ function App() {
       name: 'My',
       email: 'hanhmy.nguyenba@gmail.com',
       phone: '0945036534',
-      age: 25,
+      age: null,
       gender: 'F',
       city: 'Phu Yen',
       fee: 400000,
@@ -44,7 +44,7 @@ function App() {
       name: 'Van',
       email: 'hongvan.nguyen@gmail.com',
       phone: '0945036535',
-      age: 25,
+      age: 22,
       gender: 'F',
       city: 'Phu Yen',
       fee: 500000,
@@ -52,7 +52,7 @@ function App() {
   ]);
 
   const columns = [
-    { title: 'Name', field: 'name' },
+    { title: 'Name', field: 'name', sorting: false },
     { title: 'Email', field: 'email' },
     { title: 'Phone Number', field: 'phone', align: 'right' },
     {
@@ -63,6 +63,7 @@ function App() {
           <em>null</em>
         </>
       ),
+      defaultSort: 'asc',
     },
     { title: 'Gender', field: 'gender', lookup: { M: 'Male', F: 'Female' } },
     { title: 'City', field: 'city' },
@@ -83,7 +84,7 @@ function App() {
         title="Student Infomation"
         data={data}
         columns={columns}
-        options={{ sorting: false }}
+        options={{ sorting: true, search: false }}
       />
     </div>
   );
