@@ -85,7 +85,13 @@ function App() {
         title="Student Infomation"
         data={data}
         columns={columns}
-        options={{ sorting: true, search: true, searchText: 'Minh' }}
+        options={{
+          sorting: true,
+          search: true,
+          searchFieldAlignment: 'left',
+          searchAutoFocus: true,
+          searchFieldVariant: 'outlined',
+        }}
       />
     </div>
   );
