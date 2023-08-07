@@ -64,6 +64,7 @@ function App() {
         </>
       ),
       defaultSort: 'asc',
+      searchable: false,
     },
     { title: 'Gender', field: 'gender', lookup: { M: 'Male', F: 'Female' } },
     { title: 'City', field: 'city' },
@@ -84,7 +85,7 @@ function App() {
         title="Student Infomation"
         data={data}
         columns={columns}
-        options={{ sorting: true, search: false }}
+        options={{ sorting: true, search: true, searchText: 'Minh' }}
       />
     </div>
   );
