@@ -11,7 +11,7 @@ function App() {
       age: null,
       gender: 'M',
       city: 'Phu Yen',
-      fee: 12342,
+      fee: 100000,
     },
     {
       name: 'Nam',
@@ -20,7 +20,7 @@ function App() {
       age: 23,
       gender: 'M',
       city: 'Ho Chi Minh',
-      fee: 22342,
+      fee: 200000,
     },
     {
       name: 'Thien',
@@ -29,7 +29,7 @@ function App() {
       age: 24,
       gender: 'M',
       city: 'Phu Yen',
-      fee: 32342,
+      fee: 300000,
     },
     {
       name: 'My',
@@ -38,7 +38,7 @@ function App() {
       age: 25,
       gender: 'F',
       city: 'Phu Yen',
-      fee: 32342,
+      fee: 400000,
     },
     {
       name: 'Van',
@@ -47,7 +47,7 @@ function App() {
       age: 25,
       gender: 'F',
       city: 'Phu Yen',
-      fee: 62342,
+      fee: 500000,
     },
   ]);
 
@@ -66,7 +66,12 @@ function App() {
     },
     { title: 'Gender', field: 'gender', lookup: { M: 'Male', F: 'Female' } },
     { title: 'City', field: 'city' },
-    { title: 'School Fee', field: 'fee', type: 'currency' },
+    {
+      title: 'School Fee',
+      field: 'fee',
+      type: 'currency',
+      currencySetting: { currencyCode: 'VND', minimumFractionDigits: 0 },
+    },
   ];
 
   return (
@@ -78,6 +83,7 @@ function App() {
         title="Student Infomation"
         data={data}
         columns={columns}
+        options={{ sorting: false }}
       />
     </div>
   );
