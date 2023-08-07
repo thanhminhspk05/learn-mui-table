@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "start",
+      "problemMatcher": [],
+      "label": "Vite start",
+      "detail": "vite --mode development"
+    },
+    {
+      "type": "npm",
+      "script": "build:staging",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "vite build stag",
+      "detail": "tsc && vite build --mode staging"
+    },
+    {
+      "type": "npm",
+      "script": "build:prod",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "vite build production",
+      "detail": "vite build"
+    }
+  ]
+}
