@@ -68,6 +68,7 @@ function App() {
     {
       title: 'Age',
       field: 'age',
+      align: 'center',
       emptyValue: () => (
         <>
           <em>null</em>
@@ -76,9 +77,15 @@ function App() {
       defaultSort: 'asc',
       searchable: false,
       export: false, // don't export this column
-      defaultGroupOrder: 1, // group 0, then group 1 || Gender -> Age
+      // defaultGroupOrder: 1, // group 0, then group 1 || Gender -> Age
+      render: (rowData) => <div style={{ backgroundColor: rowData.age >= 18 ? 'Green' : 'Red' }}>{rowData.age}</div>,
     },
-    { title: 'Gender', field: 'gender', lookup: { M: 'Male', F: 'Female' }, defaultGroupOrder: 0 },
+    {
+      title: 'Gender',
+      field: 'gender',
+      lookup: { M: 'Male', F: 'Female' },
+      // defaultGroupOrder: 0
+    },
     { title: 'City', field: 'city' },
     {
       title: 'School Fee',
@@ -153,6 +160,7 @@ function App() {
             // color: 'primary',
           }),
           grouping: true, // group and drag header to box to group
+          columnsButton: true, // checkbox show or hide columns
         }}
       />
     </div>
