@@ -93,7 +93,12 @@ function App() {
           searchFieldVariant: 'outlined',
           filtering: true,
           paging: true,
-          pageSizeOptions: [5, 10, 20, 50],
+          pageSizeOptions: [2, 5, 10, 20, 50],
+          pageSize: 2, // pageSize default
+          paginationType: 'stepped',
+          showFirstLastPageButtons: false, // |< and >| button
+          paginationPosition: 'top', // top, bottom, both
+          
         }}
       />
     </div>
