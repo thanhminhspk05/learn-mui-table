@@ -1,3 +1,4 @@
+import AddIcon from '@material-ui/icons/Add';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import MaterialTable from 'material-table';
 import React, { useState } from 'react';
@@ -62,7 +63,14 @@ function App() {
   ]);
 
   const columns = [
-    { title: 'Name', field: 'name', sorting: false, filtering: false },
+    {
+      title: 'Name',
+      field: 'name',
+      sorting: false,
+      filtering: false,
+      cellStyle: { color: 'blue' },
+      headerStyle: { color: '#fff' },
+    },
     { title: 'Email', field: 'email', filterPlaceholder: 'Filter by Email' },
     { title: 'Phone Number', field: 'phone', align: 'right', grouping: false },
     {
@@ -171,6 +179,9 @@ function App() {
             background: 'green',
             fontStyle: 'italic',
           },
+        }}
+        icons={{
+          Add: () => <AddIcon />,
         }}
       />
     </div>
