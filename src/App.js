@@ -53,7 +53,7 @@ function App() {
 
   const columns = [
     { title: 'Name', field: 'name', sorting: false },
-    { title: 'Email', field: 'email' },
+    { title: 'Email', field: 'email', filterPlaceholder: 'Filter by Email' },
     { title: 'Phone Number', field: 'phone', align: 'right' },
     {
       title: 'Age',
@@ -91,6 +91,7 @@ function App() {
           searchFieldAlignment: 'left',
           searchAutoFocus: true,
           searchFieldVariant: 'outlined',
+          filtering: true,
         }}
       />
     </div>
