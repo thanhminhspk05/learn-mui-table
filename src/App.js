@@ -161,6 +161,16 @@ function App() {
           }),
           grouping: true, // group and drag header to box to group
           columnsButton: true, // checkbox show or hide columns
+          rowStyle: (data, index) =>
+            index % 2 === 0
+              ? {
+                  background: '#f5f5f5',
+                }
+              : null,
+          headerStyle: {
+            background: 'green',
+            fontStyle: 'italic',
+          },
         }}
       />
     </div>
