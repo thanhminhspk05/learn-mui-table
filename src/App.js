@@ -65,6 +65,7 @@ function App() {
       ),
       defaultSort: 'asc',
       searchable: false,
+      export: false, // don't export this column
     },
     { title: 'Gender', field: 'gender', lookup: { M: 'Male', F: 'Female' } },
     { title: 'City', field: 'city' },
@@ -88,17 +89,19 @@ function App() {
         options={{
           sorting: true,
           search: true,
-          searchFieldAlignment: 'left',
+          searchFieldAlignment: 'right',
           searchAutoFocus: true,
-          searchFieldVariant: 'outlined',
-          filtering: true,
+          searchFieldVariant: 'standard',
+          // filtering: true,
           paging: true,
           pageSizeOptions: [2, 5, 10, 20, 50],
           pageSize: 2, // pageSize default
           paginationType: 'stepped',
           showFirstLastPageButtons: false, // |< and >| button
-          paginationPosition: 'top', // top, bottom, both
-          
+          paginationPosition: 'bottom', // top, bottom, both
+          exportButton: true, // default false
+          exportAllData: true, // default export only current page
+          exportFileName: 'TableData',
         }}
       />
     </div>
