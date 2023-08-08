@@ -1,3 +1,4 @@
+import GetAppIcon from '@material-ui/icons/GetApp';
 import MaterialTable from 'material-table';
 import React, { useState } from 'react';
 import './App.css';
@@ -116,6 +117,14 @@ function App() {
               setTimeout(() => resolve(), 500);
             }),
         }}
+        actions={[
+          {
+            icon: () => <GetAppIcon />,
+            tooltip: 'Click me',
+            onClick: (e, data) => console.log(data),
+            isFreeAction: true, // positon on top, near add button, default in row table
+          },
+        ]}
         options={{
           sorting: true,
           search: true,
