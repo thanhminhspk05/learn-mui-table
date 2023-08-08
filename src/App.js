@@ -64,7 +64,7 @@ function App() {
   const columns = [
     { title: 'Name', field: 'name', sorting: false, filtering: false },
     { title: 'Email', field: 'email', filterPlaceholder: 'Filter by Email' },
-    { title: 'Phone Number', field: 'phone', align: 'right' },
+    { title: 'Phone Number', field: 'phone', align: 'right', grouping: false },
     {
       title: 'Age',
       field: 'age',
@@ -76,8 +76,9 @@ function App() {
       defaultSort: 'asc',
       searchable: false,
       export: false, // don't export this column
+      defaultGroupOrder: 1, // group 0, then group 1 || Gender -> Age
     },
-    { title: 'Gender', field: 'gender', lookup: { M: 'Male', F: 'Female' } },
+    { title: 'Gender', field: 'gender', lookup: { M: 'Male', F: 'Female' }, defaultGroupOrder: 0 },
     { title: 'City', field: 'city' },
     {
       title: 'School Fee',
@@ -125,24 +126,33 @@ function App() {
             isFreeAction: true, // positon on top, near add button, default in row table
           },
         ]}
+        onSelectionChange={(selectedRow) => console.log(selectedRow)}
         options={{
           sorting: true,
           search: true,
-          searchFieldAlignment: 'right',
+          searchFieldAlignment: 'right', // left
           searchAutoFocus: true,
-          searchFieldVariant: 'standard',
+          searchFieldVariant: 'standard', // filled, outlined
           // filtering: true,
           paging: true,
           pageSizeOptions: [5, 10, 20, 50],
           pageSize: 5, // pageSize default
-          paginationType: 'stepped',
+          paginationType: 'normal', // stepped
           showFirstLastPageButtons: false, // |< and >| button
           paginationPosition: 'bottom', // top, bottom, both
           exportButton: true, // default false
           exportAllData: true, // default export only current page
           exportFileName: 'TableData', // set filename default
-          addRowPosition: 'first',
+          addRowPosition: 'first', // position on new row when click add button
           actionsColumnIndex: -1, // save button position: last
+          selection: true, // show select on row
+          showSelectAllCheckbox: false, // hide select all checkbox button
+          showTextRowsSelected: false, // hide pink notify select ... rows
+          selectionProps: (rowData) => ({
+            disabled: rowData.age === null, // disabled if age === null
+            // color: 'primary',
+          }),
+          grouping: true, // group and drag header to box to group
         }}
       />
     </div>
