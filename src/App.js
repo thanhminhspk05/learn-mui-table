@@ -52,7 +52,7 @@ function App() {
   ]);
 
   const columns = [
-    { title: 'Name', field: 'name', sorting: false },
+    { title: 'Name', field: 'name', sorting: false, filtering: false },
     { title: 'Email', field: 'email', filterPlaceholder: 'Filter by Email' },
     { title: 'Phone Number', field: 'phone', align: 'right' },
     {
@@ -92,6 +92,8 @@ function App() {
           searchAutoFocus: true,
           searchFieldVariant: 'outlined',
           filtering: true,
+          paging: true,
+          pageSizeOptions: [5, 10, 20, 50],
         }}
       />
     </div>
