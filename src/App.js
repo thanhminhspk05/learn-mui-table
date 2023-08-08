@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState([
+  const [tableData, setTableData] = useState([
     {
       name: 'Minh',
       email: 'thanhminh@gmail.com',
@@ -49,6 +49,15 @@ function App() {
       city: 'Phu Yen',
       fee: 500000,
     },
+    {
+      name: 'Trinh',
+      email: 'ngoctrinh.le@gmail.com',
+      phone: '09450012324',
+      age: 12,
+      gender: 'F',
+      city: 'Phu Yen',
+      fee: 600000,
+    },
   ]);
 
   const columns = [
@@ -84,8 +93,29 @@ function App() {
 
       <MaterialTable
         title="Student Infomation"
-        data={data}
+        data={tableData}
         columns={columns}
+        editable={{
+          onRowAdd: (newRow) =>
+            new Promise((resolve, reject) => {
+              setTableData((prevData) => [...prevData, newRow]);
+              setTimeout(() => resolve(), 500);
+            }),
+          onRowUpdate: (newRow, oldRow) =>
+            new Promise((resolve, reject) => {
+              const updatedData = [...tableData];
+              updatedData[oldRow.tableData.id] = newRow; // oldRow.tableData.id: index of row on table
+              setTableData(updatedData);
+              setTimeout(() => resolve(), 500);
+            }),
+          onRowDelete: (seletedRow) =>
+            new Promise((resolve, reject) => {
+              const updatedData = [...tableData];
+              updatedData.splice(seletedRow.tableData.id, 1); // cut 1 element from index === delete
+              setTableData(updatedData);
+              setTimeout(() => resolve(), 500);
+            }),
+        }}
         options={{
           sorting: true,
           search: true,
@@ -94,14 +124,16 @@ function App() {
           searchFieldVariant: 'standard',
           // filtering: true,
           paging: true,
-          pageSizeOptions: [2, 5, 10, 20, 50],
-          pageSize: 2, // pageSize default
+          pageSizeOptions: [5, 10, 20, 50],
+          pageSize: 5, // pageSize default
           paginationType: 'stepped',
           showFirstLastPageButtons: false, // |< and >| button
           paginationPosition: 'bottom', // top, bottom, both
           exportButton: true, // default false
           exportAllData: true, // default export only current page
-          exportFileName: 'TableData',
+          exportFileName: 'TableData', // set filename default
+          addRowPosition: 'first',
+          actionsColumnIndex: -1, // save button position: last
         }}
       />
     </div>
